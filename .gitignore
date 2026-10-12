@@ -28,3 +28,4 @@ stats.log
 .idea/
 .DS_Store
 Thumbs.db
+suricata/logs/
