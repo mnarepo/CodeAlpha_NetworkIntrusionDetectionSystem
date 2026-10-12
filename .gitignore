@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Generated analysis output
+output/*.csv
+output/*.json
+output/*.html
+
+# Real Suricata runtime logs and captures
+eve.json
+fast.log
+stats.log
+*.pcap
+*.pcapng
+
+# Secrets / environment
+.env
+.env.*
+*.key
+*.pem
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

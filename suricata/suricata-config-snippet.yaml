@@ -1,0 +1,24 @@
+# Merge these values into your existing suricata.yaml.
+# Do NOT replace your full Suricata configuration with this file.
+vars:
+  address-groups:
+    HOME_NET: "[192.168.0.0/16,10.0.0.0/8,172.16.0.0/12]"
+    EXTERNAL_NET: "!$HOME_NET"
+
+rule-files:
+  - suricata.rules
+  - codealpha.rules
+
+outputs:
+  - eve-log:
+      enabled: yes
+      filetype: regular
+      filename: eve.json
+      types:
+        - alert:
+            tagged-packets: yes
+        - http
+        - dns
+        - tls
+        - flow
+        - stats

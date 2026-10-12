@@ -1,0 +1,9 @@
+# CodeAlpha Network Intrusion Detection System
+# Custom LOCAL-LAB rules for authorized defensive testing only.
+# SID range reserved for this project: 1000001-1000099
+
+alert icmp any any -> $HOME_NET any (msg:"CODEALPHA LAB ICMP Echo Request"; itype:8; classtype:attempted-recon; sid:1000001; rev:1;)
+alert tcp any any -> $HOME_NET 4444 (msg:"CODEALPHA LAB TCP SYN to Training Port 4444"; flags:S; flow:stateless; classtype:attempted-recon; sid:1000002; rev:1;)
+alert http any any -> $HOME_NET any (msg:"CODEALPHA LAB HTTP Test User-Agent"; http.user_agent; content:"CodeAlpha-NIDS-Test"; nocase; classtype:misc-activity; sid:1000003; rev:1;)
+alert udp any any -> $HOME_NET 9999 (msg:"CODEALPHA LAB UDP Probe to Training Port 9999"; classtype:attempted-recon; sid:1000004; rev:1;)
+alert tcp any any -> $HOME_NET 8080 (msg:"CODEALPHA LAB Repeated TCP Connection Attempts to Port 8080"; flags:S; flow:stateless; threshold:type both, track by_src, count 5, seconds 10; classtype:attempted-recon; sid:1000005; rev:1;)
